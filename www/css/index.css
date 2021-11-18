@@ -1,0 +1,140 @@
+/* Header --------------------------------------*/
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#containerList {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Button --------------------------------------------*/
+.button {
+    font-size: 10px;
+    height: 30px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#refreshList {
+    height: 50px;
+    width: 100px;
+    border-radius: 6px;
+    border: 1px solid black;
+    font-size: 15px;
+}
+
+#conectar {
+    height: 50px;
+    width: 150px;
+    border-radius: 6px;
+    border: 1px solid black;
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* List Devices ------------------------------------*/
+#listDevices {
+    height: 60vh;
+    width: 90vw;
+    border: 2px solid rgb(180, 174, 174);
+    font-size: 30px;
+}
+
+/* Peguei isso de outro projeto meu ------------------------*/
+/* Faz aparecer a div que contem o terminal */
+.terminal {
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.terminal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*   Tela do terminal =============================================*/
+#screenTerminalSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTerminal {
+    background: green;
+    height: 9vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTerminal button {
+    padding: 10px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+#divTerminal {
+    height: 100vh;
+    background: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#screenTerminal {
+    height: 50px;
+    font-size: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#divButton {
+    height: 10vh;
+    width: 70vw;
+    padding: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#divButton button {
+    height: 5vh;
+    width: 13vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Classe criada no elemento que tem a mensagems de erro e sucesso no index.js =======================*/
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}

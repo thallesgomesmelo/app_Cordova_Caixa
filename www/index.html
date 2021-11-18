@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">       
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="./css/index.css">
+        <title>Caixa DAgua</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Dispositivos</h1>
+            <div class="button">
+                <button id="refreshList">Recarregar</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Listar os dispositivo -->
+            <section id="containerList">
+                <div id="listDevices"></div>
+                <button id="conectar">Conectar</button>
+            </section>
+
+            <!-- Tela do terminal -->
+            <section id="screenTerminalSection">
+                <div class="terminal">
+                        <div class="headerTerminal">
+                            <button id="disconnect">Desconectar</button>
+                        </div>
+                         <!-- Terminal -->
+                        <div id="divTerminal">
+                            <input type="text" id="screenTerminal"/>
+                            <div id="divButton">
+                                <button id="clean">Limpar</button>
+                                <button id="send">Enviar</button>
+                            </div>
+                        </div>
+                </div>
+            </section>
+        </main>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        
+    </body>
+</html>
