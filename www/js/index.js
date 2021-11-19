@@ -89,7 +89,6 @@ const App = {
     openTerminal() {
         document.querySelector('.terminal').classList.add('active')
         cleanTerminal()
-        bluetoothSerial.write("\n")
         bluetoothSerial.subscribe('\n', App.handleData, error => {alert("Erro:\n" + error)})
     },
 
@@ -108,8 +107,6 @@ const App = {
         if (isIncoming) {
            
         } 
-        
-
         dataContainer.append(data)
     }
 }
