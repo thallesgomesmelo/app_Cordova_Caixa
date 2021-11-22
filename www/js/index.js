@@ -11,9 +11,9 @@ clean = () => {
     document.getElementById('listDevices').innerHTML = ' '
 }
 
-cleanTerminal = () => {
-    document.getElementById('screenTerminal').innerHTML = ' '
-}
+// cleanTerminal = () => {
+//     document.getElementById('screenTerminal').innerHTML = ' '
+// }
 
 closeTerminal = () => { 
     document.querySelector('.terminal').classList.remove('active')
@@ -75,12 +75,12 @@ const App = {
         bluetoothSerial.isConnected(
             () => { bluetoothSerial.disconnect(App.deviceDisconnected, error => {alert("Error:\n" + error)})
                     closeTerminal()
-                    cleanTerminal()
+                    // cleanTerminal()
                     refresh()             
                 },
                 () => {
                     closeTerminal()
-                    cleanTerminal()
+                    // cleanTerminal()
                     refresh()
                 }
         )
@@ -88,7 +88,8 @@ const App = {
 
     openTerminal() {
         document.querySelector('.terminal').classList.add('active')
-        cleanTerminal()
+        // cleanTerminal()
+
         bluetoothSerial.subscribe('\n', App.handleData, error => {alert("Erro:\n" + error)})
     },
 
@@ -102,11 +103,13 @@ const App = {
     },
 
     displayInTerminal(data, isIncoming) {
-        let dataContainer = document.getElementById('screenTerminal')
        
         if (isIncoming) {
-           
-        } 
+            //resposta do dispositivo
+            alert("Conectado" + data)
+        } else {
+            //dados que usuario envia
+        }
         dataContainer.append(data)
     }
 }
@@ -117,4 +120,3 @@ App.initialize()
 document.getElementById("conectar").addEventListener("click", App.connect)
 document.getElementById("disconnect").addEventListener('click', App.toggleConnection)
 document.getElementById("refreshList").addEventListener("click", refresh)
-document.getElementById("clean").addEventListener('click', cleanTerminal)

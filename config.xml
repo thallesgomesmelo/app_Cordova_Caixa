@@ -2,7 +2,7 @@
 <widget id="com.walter" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>caixaDAgua</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        App feito pra ter controle da caixa D'Água.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
@@ -22,4 +22,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+
+    <preference name="orientation" value="portrait" />
 </widget>

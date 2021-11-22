@@ -92,7 +92,8 @@ header {
 
 #divTerminal {
     height: 100vh;
-    background: white;
+    background: black;
+    color: white;
 
     display: flex;
     flex-direction: column;
