@@ -9,7 +9,8 @@ ligarBomba = () => {
 buttonLigar.addEventListener('click',ligarBomba)
 
 enviarDados = () => {
-    let enviar = "ev"
+    let enviar = `ev,${inputInstalada.value},${inputMax.value},${inputMin.value},${inputAtual.value},`
+    alert(enviar)
     bluetoothSerial.write(enviar,null, () => {alert('Erro: Comando de enviar dados falhou')})
 }
 buttonEnviar.addEventListener('click',enviarDados)

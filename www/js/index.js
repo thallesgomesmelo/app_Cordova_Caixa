@@ -114,10 +114,10 @@ const App = {
         App.displayInTerminal(data, true)
     },
 
-    displayInTerminal(data, isIncoming) {
-       
+    displayInTerminal(data, isIncoming) {       
         if (isIncoming) {
             //resposta do dispositivo
+            alert("dados chegando " +data)
             if(/ev/.test(data)){
                 //Pegando valores e separando, depois adiciona a um array
                 let guarda = data.slice(3)
@@ -130,6 +130,10 @@ const App = {
                 inputMax.value = getData[1]
                 inputMin.value = getData[2]
                 inputAtual.value = getData[3]
+            } else if(/evok/.test(data)) {
+                alert("testando valor ok")
+            } else {
+                alert("Retormando vazio" + data)
             }
         } else {
             //dados que usuario envia
