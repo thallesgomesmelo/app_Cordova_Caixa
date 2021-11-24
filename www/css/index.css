@@ -101,7 +101,7 @@ header {
     align-items: center;
 }
 
-#screenTerminal {
+.screenTerminal {
     height: 50px;
     font-size: 21px;
 
@@ -112,7 +112,7 @@ header {
 
 #divButton {
     height: 10vh;
-    width: 70vw;
+    width: 87vw;
     padding: 50px;
 
     display: flex;
