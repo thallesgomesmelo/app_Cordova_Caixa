@@ -104,10 +104,7 @@ header {
 .screenTerminal {
     height: 50px;
     font-size: 21px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;    
 }
 
 #divButton {
