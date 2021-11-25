@@ -118,7 +118,7 @@ const App = {
         if (isIncoming) {
             //resposta do dispositivo
             alert("dados chegando " +data)
-            if(/ev/.test(data)){
+            if(/lr/.test(data)){
                 //Pegando valores e separando, depois adiciona a um array
                 let guarda = data.slice(3)
                 getData = guarda.split(",")
@@ -127,13 +127,13 @@ const App = {
 
                 //Adiciomando valores nos campos input
                 inputInstalada.value = getData[0]
-                inputMax.value = getData[1]
-                inputMin.value = getData[2]
-                inputAtual.value = getData[3]
+                inputMax.value = parseInt(getData[1]/10)
+                inputMin.value = parseInt(getData[2]/10)
+                inputAtual.value = parseInt(getData[3]/10)
             } else if(/evok/.test(data)) {
                 alert("testando valor ok")
             } else {
-                alert("Retormando vazio" + data)
+                alert("Retormando vazio " + data)
             }
         } else {
             //dados que usuario envia
