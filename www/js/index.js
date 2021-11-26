@@ -6,7 +6,6 @@ let inputMax = document.getElementById('alturaMax')
 let inputMin = document.getElementById('alturaMin')
 let inputAtual = document.getElementById('alturaAtual')
 
-
 refresh = () => {
     address = ""
     clean()
@@ -24,10 +23,6 @@ inputClean = () => {
     inputAtual.value = ''
 }
 
-// cleanTerminal = () => {
-//     document.getElementById('screenTerminal').innerHTML = ' '
-// }
-
 closeTerminal = () => { 
     document.querySelector('.terminal').classList.remove('active')
 }
@@ -38,7 +33,7 @@ const App = {
     },
     
     onDeviceReady() {
-        bluetoothSerial.isEnabled(App.listPairedDevices, () => {alert("Erro: Bluetooth desligado")})
+        bluetoothSerial.isEnabled(App.listPairedDevices, () => {alert("Erro: Bluetooth Desligado.")})
     },
 
     listPairedDevices() {
@@ -88,21 +83,23 @@ const App = {
         bluetoothSerial.isConnected(
             () => { bluetoothSerial.disconnect(App.deviceDisconnected, error => {alert("Error:\n" + error)})
                     closeTerminal()
-                    // cleanTerminal()
                     refresh()             
                 },
                 () => {
                     closeTerminal()
-                    // cleanTerminal()
                     refresh()
                 }
         )
     },
 
     openTerminal() {
-        document.querySelector('.terminal').classList.add('active')
-        inputClean()
-        lerDados()
+        document.querySelector('.terminal').classList.add('active') //Comando que abre a tela de configurar.
+        inputClean() //Limpa o campos input quando abre a tela de configurar.
+        
+        //Quando abrir tela de configurar vai fazer leitura dos dados do dispositivo e preencher os campos input.
+        bluetoothSerial.write('lr')
+
+        //Comando que daz leitura dos dados do disposito.
         bluetoothSerial.subscribe('\n', App.handleData, error => {alert("Erro:\n" + error)})
     },
 
@@ -116,26 +113,21 @@ const App = {
     },
 
     displayInTerminal(data, isIncoming) {       
+        //Resposta do dispositivo
         if (isIncoming) {
-            //resposta do dispositivo
-            alert("dados chegando " +data)
             if(/lr/.test(data)){
                 //Pegando valores e separando, depois adiciona a um array
                 let guarda = data.slice(3)
                 getData = guarda.split(",")
                 
-                inputClean() //Limpo os campos input depois adiciono valores a eles
-
-                formatarInput()
+                inputClean() //Limpa os campos input.
+                formatarInput() //Faz formatação nos campos input.
             } else if(/evok/.test(data)) {
-                alert("testando valor ok")
-            } else {
-                alert("Retormando vazio " + data)
+                alert("Novos dados enviado com sucesso.")
+            } else if(/bbok/.test(data)) {
+                alert("Bomba ligada com sucesso.")
             }
-        } else {
-            //dados que usuario envia
-            alert("estou enviando: " + data)
-        }
+        } 
     }
 }
 
