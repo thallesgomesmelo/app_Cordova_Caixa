@@ -102,6 +102,7 @@ const App = {
     openTerminal() {
         document.querySelector('.terminal').classList.add('active')
         inputClean()
+        lerDados()
         bluetoothSerial.subscribe('\n', App.handleData, error => {alert("Erro:\n" + error)})
     },
 
@@ -125,11 +126,7 @@ const App = {
                 
                 inputClean() //Limpo os campos input depois adiciono valores a eles
 
-                //Adiciomando valores nos campos input
-                inputInstalada.value = getData[0]
-                inputMax.value = parseInt(getData[1]/10)
-                inputMin.value = parseInt(getData[2]/10)
-                inputAtual.value = parseInt(getData[3]/10)
+                formatarInput()
             } else if(/evok/.test(data)) {
                 alert("testando valor ok")
             } else {

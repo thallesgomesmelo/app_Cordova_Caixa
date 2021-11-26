@@ -101,6 +101,13 @@ header {
     align-items: center;
 }
 
+#divTerminal button {
+    padding: 10px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
 .screenTerminal {
     height: 50px;
     font-size: 21px;
