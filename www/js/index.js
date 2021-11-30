@@ -1,10 +1,6 @@
 let address = ""
 let getData = []
 let list = document.getElementById("listDevices")
-let inputInstalada = document.getElementById('alturaInstalada')
-let inputMax = document.getElementById('alturaMax')
-let inputMin = document.getElementById('alturaMin')
-let inputAtual = document.getElementById('alturaAtual')
 
 refresh = () => {
     address = ""
@@ -14,13 +10,6 @@ refresh = () => {
 
 clean = () => {
     document.getElementById('listDevices').innerHTML = ' '
-}
-
-inputClean = () => {
-    inputInstalada.value = ''
-    inputMax.value = ''
-    inputMin.value = ''
-    inputAtual.value = ''
 }
 
 closeTerminal = () => { 
@@ -39,7 +28,7 @@ const App = {
     listPairedDevices() {
         bluetoothSerial.list(devices => {
             if(devices == devices.length){
-                list.append('Erro: Não encontrou dispositivos')
+                list.append('Erro: Não encontrou dispositivos já pareados.')
             } else {
                 devices.forEach(device => {                    
                     inputRadio = document.createElement('input')
@@ -63,14 +52,14 @@ const App = {
         }, () => {alert("Don't list")}) 
     },
 
-    selectDevice(event) { 
+    selectDevice(event) { //Pegando a ação de seleção de address.
         address = event.currentTarget.value
     },  
 
-    connect() {
+    connect() { //Função do botão conectar.
         bluetoothSerial.connect(address, App.openTerminal, 
             () => {
-                if(address === ""){
+                if(address === ""){ 
                     alert("Erro: Não foi selecionado um dispositivo.")
                 } else {
                     alert("Erro: Perdeu conexão com dispositivo.")
@@ -96,10 +85,10 @@ const App = {
         document.querySelector('.terminal').classList.add('active') //Comando que abre a tela de configurar.
         inputClean() //Limpa o campos input quando abre a tela de configurar.
         
-        //Quando abrir tela de configurar vai fazer leitura dos dados do dispositivo e preencher os campos input.
+        //Faz com que a tela de configurar já aparece com os campos input preenchido.
         bluetoothSerial.write('lr')
 
-        //Comando que daz leitura dos dados do disposito.
+        //Comando que faz leitura dos dados do disposito.
         bluetoothSerial.subscribe('\n', App.handleData, error => {alert("Erro:\n" + error)})
     },
 

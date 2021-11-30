@@ -2,12 +2,23 @@ let buttonLigar = document.getElementById('ligar')
 let buttonEnviar = document.getElementById('send')
 let buttonLer = document.getElementById('ready')
 
-//Comando de Ligar Bomba.
-ligarBomba = () => {
-    let bomba = "bb"
-    bluetoothSerial.write(bomba,null, () => {alert('Erro: Comando de ligar bomba falhou')})
+let inputInstalada = document.getElementById('alturaInstalada')
+let inputMax = document.getElementById('alturaMax')
+let inputMin = document.getElementById('alturaMin')
+let inputAtual = document.getElementById('alturaAtual')
+
+//Limpa campos input.
+inputClean = () => {
+    inputInstalada.value = ''
+    inputMax.value = ''
+    inputMin.value = ''
+    inputAtual.value = ''
 }
-buttonLigar.addEventListener('click',ligarBomba)
+
+//Botão de Ligar Bomba.
+buttonLigar.addEventListener('click',ligarBomba = () => {
+                    bluetoothSerial.write('bb',null, () => {alert('Erro: Comando de ligar bomba falhou')})
+                })
 
 //Comando de envio de dados.
 enviarDados = () => {
@@ -28,22 +39,33 @@ enviarDados = () => {
         alert("Erro: Altura máxima menor que altura mínima informada.")
     } else if(valueAlturaMin > valueAlturaMax) {
         alert("Erro: Altura mínima maior que altura máxima informada.")
-    } else {
-        enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},${valueAlturaMin}`
-    }
+    } else { //Validando Menor de 99 pra adicionar o 0.
+        if(valueAlturaInstalada < 99){
+            enviar = `ev,0${valueAlturaInstalada}0,${valueAlturaMax},${valueAlturaMin}`
 
+        } else if(valueAlturaMax < 99){
+            enviar = `ev,${valueAlturaInstalada},0${valueAlturaMax}0,${valueAlturaMin}`
+
+        } else if(valueAlturaMin < 99){
+            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},0${valueAlturaMin}0`
+
+        } else if(valueAlturaInstalada < 99 && valueAlturaMax < 99 && valueAlturaMin < 99){
+            enviar = `ev,0${valueAlturaInstalada}0,0${valueAlturaMax}0,0${valueAlturaMin}0`
+
+        } else {
+            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},${valueAlturaMin}`
+        }
+    }
     bluetoothSerial.write(enviar,null, () => {alert('Erro: Comando de enviar dados falhou')})
 }
 buttonEnviar.addEventListener('click',enviarDados)
 
 //Comando que faz leitura de dados.
-lerDado = () => {
-    let ler = "lr"
-
+lerDado = () => {    
     inputClean() //Limpa campos input.
     
     setTimeout(() => {
-        bluetoothSerial.write(ler,null, () => {alert('Erro: Comando de ler dados falhou')})
+        bluetoothSerial.write("lr",null, () => {alert('Erro: Comando de ler dados falhou')})
     },500)
 }
 buttonLer.addEventListener('click',lerDado)
