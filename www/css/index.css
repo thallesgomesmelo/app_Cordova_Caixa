@@ -97,8 +97,25 @@ header {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+#divInput {
+    height: 70vh;
+    width: 90vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#divInput div {
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #divButton button {
@@ -122,7 +139,7 @@ header {
 #divButton {
     height: 10vh;
     width: 87vw;
-    padding: 50px;
+    padding: 40px;
 
     display: flex;
     align-items: center;
