@@ -114,7 +114,7 @@ const App = {
             } else if(/evok/.test(data)) {
                 alert("Novos dados enviado com sucesso.")
             } else if(/bbok/.test(data)) {
-                alert("Bomba ligada com sucesso.")
+                alert("Bomba alterada com sucesso.")
             }
         } 
     }
