@@ -22,9 +22,9 @@ buttonLigar.addEventListener('click',ligarBomba = () => {
 
 //Comando de envio de dados.
 enviarDados = () => {
-    let valueAlturaInstalada = inputInstalada.value
-    let valueAlturaMax = inputMax.value
-    let valueAlturaMin = inputMin.value
+    let valueAlturaInstalada = parseFloat(inputInstalada.value*10)
+    let valueAlturaMax = parseFloat(inputMax.value*10)
+    let valueAlturaMin = parseFloat(inputMin.value*10)
     let enviar //Comando com valores certos.
     
     if(valueAlturaInstalada === '' && valueAlturaMax === '' && valueAlturaMin === '') {
@@ -41,19 +41,19 @@ enviarDados = () => {
         alert("Erro: Altura mínima maior que altura máxima informada.")
     } else { //Validando Menor de 99 pra adicionar o 0.
         if(valueAlturaInstalada < 99){
-            enviar = `ev,0${valueAlturaInstalada}0,${valueAlturaMax},${valueAlturaMin}`
+            enviar = `ev,0${valueAlturaInstalada}0,${valueAlturaMax},${valueAlturaMin},`
 
         } else if(valueAlturaMax < 99){
-            enviar = `ev,${valueAlturaInstalada},0${valueAlturaMax}0,${valueAlturaMin}`
+            enviar = `ev,${valueAlturaInstalada},0${valueAlturaMax}0,${valueAlturaMin},`
 
         } else if(valueAlturaMin < 99){
-            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},0${valueAlturaMin}0`
+            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},0${valueAlturaMin}0,`
 
         } else if(valueAlturaInstalada < 99 && valueAlturaMax < 99 && valueAlturaMin < 99){
-            enviar = `ev,0${valueAlturaInstalada}0,0${valueAlturaMax}0,0${valueAlturaMin}0`
+            enviar = `ev,0${valueAlturaInstalada}0,0${valueAlturaMax}0,0${valueAlturaMin}0,`
 
         } else {
-            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},${valueAlturaMin}`
+            enviar = `ev,${valueAlturaInstalada},${valueAlturaMax},${valueAlturaMin},`
         }
     }
     bluetoothSerial.write(enviar,null, () => {alert('Erro: Comando de enviar dados falhou')})
